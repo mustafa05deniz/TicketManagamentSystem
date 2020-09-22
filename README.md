@@ -51,17 +51,26 @@ const mongoDB = 'mongodb+srv://user:password@url/'+db_name+'?retryWrites=true&w=
 
 ## İmages
 
+<h1>Add Message</h1>
+
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/add_new_message.PNG">
+<h1>Add Ticket</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/add_ticket.PNG">
+<h1>Admin Screen</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/admin_screen.PNG">
-<img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/admin_screen.PNG">
+<h1>Change Status</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/change_status.PNG">
+<h1>Close Ticket</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/closed_tickets.PNG">
+<h1>Filter Email and title</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/filter_email_and_title.PNG">
-<img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/filter_email_and_title.PNG">
+<h1>Filter Screen</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/filter_screen.PNG">
+<h1>Filter Ticket</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/filter_ticket.PNG">
+<h1>Login Screen</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/login_screen.PNG">
+<h1>my Tickets</h1>
 <img src="https://github.com/mustafa05deniz/TicketManagamentSystem/blob/master/frontend/my_tickets.PNG">
 
 
