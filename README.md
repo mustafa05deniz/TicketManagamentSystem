@@ -12,6 +12,8 @@ role :    0=admin , 1=normal user
 
 ## Demo
 
+url : https://ticketsystemfrontend.herokuapp.com/auth/login
+
 demo user : normalUser@gmail.com 
 password : 123456789
 
