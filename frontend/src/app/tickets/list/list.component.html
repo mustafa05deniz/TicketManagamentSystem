@@ -1,0 +1,153 @@
+<div class="row ticket">
+    <div class="col-12 ">
+
+        <div class="filterbar" *ngIf="this.role =='0'">
+            <div class="status">
+                <button type="button" (click)="filterWithStatus(999)"
+                    class="btn btn-sm btn-outline-primary">ALL</button>
+                <button type="button" (click)="filterWithStatus(0)"
+                    class="btn btn-sm btn-outline-primary">OPENED</button>
+                <button type="button" (click)="filterWithStatus(1)"
+                    class="btn btn-sm btn-outline-secondary">WAITING</button>
+                <button type="button" (click)="filterWithStatus(2)"
+                    class="btn btn-sm btn-outline-success">RESPONDED</button>
+                <button type="button" (click)="filterWithStatus(3)"
+                    class="btn btn-sm btn-outline-danger">CLOSED</button>
+            </div>
+            <div class="filter">
+                <button type="button" (click)="openDialog(filterBar)"
+                    class="btn btn-sm btn-outline-secondary">Filter</button>
+            </div>
+
+
+        </div>
+
+        <small *ngIf="this.role =='1'" class="d-block text-right mt-3">
+
+            <button type="button" (click)="openDialog(Ticket)" class="btn btn-sm btn-outline-secondary">Add New
+                Ticket</button>
+            <button style="margin-left: 10px;" type="button" (click)="openDialog(filterBarForUser)"
+                class="btn btn-sm btn-outline-secondary">Filter</button>
+        </small>
+        <br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">#</th>
+                    <th scope="col">status</th>
+                    <th scope="col" *ngIf="this.role =='0'">user</th>
+                    <th scope="col">title</th>
+                    <th scope="col">created</th>
+                    <th scope="col">link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticket of ticketList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td [routerLink]="['/tickets/review',ticket._id]" style="color:blue;cursor:pointer">
+                        #{{ticket.ticketCount}}</td>
+                    <th scope="row">
+                        <span *ngIf="ticket.status == 0" class="badge badge-primary">OPENED</span>
+                        <span *ngIf="ticket.status == 1" class="badge badge-secondary">WAITING</span>
+                        <span *ngIf="ticket.status == 2" class="badge badge-warning">RESPONDED</span>
+                        <span *ngIf="ticket.status == 3" class="badge badge-success">CLOSED</span>
+
+                    </th>
+                    <td *ngIf="this.role =='0'">
+                        {{ticket.userEmail}}
+                    </td>
+                    <td> {{ticket.title}}</td>
+                    <td>{{ticket.createdDate| date:'mediumTime'}} </td>
+                    <td><button type="button" class="btn btn-sm btn-info"
+                            [routerLink]="['/tickets/review',ticket._id]">REVIEW</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<ng-template #filterBar>
+
+    <h2 mat-dialog-title>Filter With Email Or Title </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="filterForm">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title" placeholder="title">
+            </mat-form-field>
+        </form>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="filter()" cdkFocusInitial>Filter
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #filterBarForUser>
+
+    <h2 mat-dialog-title>Filter With Email Or Title </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="filterForm">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title" placeholder="title">
+            </mat-form-field>
+
+
+        </form>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="filter()" cdkFocusInitial>Filter
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #Ticket>
+
+    <h2 mat-dialog-title>Add New Ticket </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="TicketForm">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title" placeholder="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>text</mat-label>
+                <input matInput formControlName="text" placeholder="title">
+            </mat-form-field>
+
+            <div class="form-group">
+                <input type="file" (change)="uploadFile($event)">
+            </div>
+        </form>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="addNewTicket()" cdkFocusInitial>Add New
+            Ticket
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>

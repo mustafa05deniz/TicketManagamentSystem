@@ -1,0 +1,41 @@
+{
+  "name": "ipsizcambaz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustafa05deniz/ipsizcambazworktask.git"
+  },
+  "keywords": [
+    "ipsizcambaz",
+    "case",
+    "homework"
+  ],
+  "author": "mustafa05deniz@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mustafa05deniz/ipsizcambazworktask/issues"
+  },
+  "homepage": "https://github.com/mustafa05deniz/ipsizcambazworktask#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-form-data": "^2.0.14",
+    "express-validator": "^6.6.1",
+    "mocha": "^8.1.2",
+    "mongoose": "^5.10.0",
+    "multer": "^1.4.2"
+  }
+}

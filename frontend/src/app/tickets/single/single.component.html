@@ -1,0 +1,92 @@
+<div class="" *ngIf="TicketResponse">
+
+   
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <img [routerLink]="['/tickets/list']" style="cursor: pointer;" src="../../../assets/arrow.png" width="25px">
+        <small class="d-block text-right mt-3">
+            <a  style="color:blue;cursor:pointer" (click)="openDialog(newMessage)">Add New Message </a>
+            <a  style="color:red;cursor:pointer" *ngIf="this.role =='0'" (click)="openDialog(changeStatus)">Change Status</a>
+        </small>
+        
+    <div class="image_list">
+        <a href="{{file}}" *ngFor="let file of TicketResponse.files" target="_blank"><img width="100px"  src="{{file}}" ></a>
+ 
+    </div>
+        <h4 class="border-bottom border-gray pb-2 mb-0"> 
+            #{{TicketResponse.ticketCount}} - 
+            <span *ngIf="TicketResponse.status == 0" class="badge badge-primary">OPENED</span>
+            <span *ngIf="TicketResponse.status == 1" class="badge badge-secondary">WAITING</span>
+            <span *ngIf="TicketResponse.status == 2" class="badge badge-warning">RESPONDED</span>
+            <span *ngIf="TicketResponse.status == 3" class="badge badge-success">CLOSED</span>
+            - {{TicketResponse.title}} 
+        </h4>
+        <div class="media text-muted pt-3" *ngFor="let message of TicketResponse.messages.reverse()">
+            <img *ngIf="message.role == 0" width="70px" class="bd-placeholder-img mr-2 rounded poli" src="https://thumbs.dreamstime.com/b/print-173513015.jpg" >
+            <img *ngIf="message.role == 1" width="70px" class="bd-placeholder-img mr-2 rounded you " src="https://cdn.psychologytoday.com/sites/default/files/field_blog_entry_images/2019-05/you.jpg">
+            
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark"> {{message.createdDate|date:"medium"}}</strong>
+                {{message.text }}
+            </p>
+            <br>
+            <div class="image_list">
+                <a href="{{file}}" *ngFor="let file of message.files" target="_blank"><img width="30px"  src="{{file}}" ></a>
+         
+            </div>
+        </div>
+
+    </div>
+
+    
+</div>
+
+
+
+<ng-template #newMessage>
+
+    <h2 mat-dialog-title>Add New Message </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <form class="example-form" [formGroup]="messageForm">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Message</mat-label>
+                <textarea matInput formControlName="text" placeholder="New Message"></textarea>
+            </mat-form-field>
+            <div class="form-group">
+                <input type="file" (change)="uploadFile($event)">
+            </div>
+        </form>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="addNewMessage()" cdkFocusInitial>Add
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #changeStatus>
+
+    <h2 mat-dialog-title>Add New Message </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cars</mat-label>
+            <select #changed matNativeControl required>
+              <option value="0">OPENED</option>
+              <option value="1">WAITING</option>
+              <option value="2">RESPONDED</option>
+              <option value="3">CLOSED</option>
+            </select>
+          </mat-form-field>
+ 
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="changeStatusFunction(changed.value)" cdkFocusInitial>Add
+        </button>
+    </mat-dialog-actions>
+
+</ng-template>

@@ -1,0 +1,33 @@
+
+<div class="row text-center login">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+      <form class="example-form" [formGroup]="signUpForm">
+        <div class="img text-center">
+          <img src="../../../assets/md-codes.png" width="200px">
+        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Ex. Pizza" value="normalUser@gmail.com">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="Ex. Pizza" type="password" value="123456789">
+        </mat-form-field>
+  
+        <button mat-raised-button="primary" (click)="signUp()"
+          [disabled]="this.signUpForm.invalid || is_click">
+          <div *ngIf="!is_click">signUp</div>
+          <img *ngIf="is_click" src="../../../assets/spinner.gif" width="40px">
+        </button>
+        <div class="signup">
+          <button mat-button="primary" [routerLink]="['/auth/login']">login</button>
+        </div>
+      </form>
+  
+  
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
