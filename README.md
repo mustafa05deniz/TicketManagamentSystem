@@ -87,3 +87,6 @@ const mongoDB = 'mongodb+srv://user:password@url/'+db_name+'?retryWrites=true&w=
     mongoose model structure 
 - routes
     routing and validations 
+
+
+heroku logs --app AppName -t
